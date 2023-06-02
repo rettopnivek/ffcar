@@ -22,8 +22,34 @@ Operator that returns the content of a
 sublist at a specified level for a list of lists.
 }
 \examples{
-x <- c( A1 = 1, A2 = 2, B1 = 3, B2 = 4 )
-x \%with_name\% 'A'
-x \%with_name\% 'B'
+# List with 1 nested level
+lst <- list(
+  SL1 = list( A = 1, B = 2, C = 3 ),
+  SL2 = list( A = 4, B = 5, C = 6 )
+)
+# Extract element 'A' from each sublist
+lst \%pull_sublist\% 'A'
+# Extract 1st element from each sublist
+lst \%pull_sublist\% 1
+# Extract element 'B' from each sublist
+lst \%pull_sublist\% 'B'
+# Extract 2nd element from each sublist
+lst \%pull_sublist\% 2
+
+# List with two nested levels
+lst <- list(
+  SL1 = list(
+    SL11 = list( A = 1, B = 2 ),
+    SL12 = list( A = 3, B = 4 )
+  ),
+  SL2 = list(
+    SL21 = list( A = 5, B = 6 ),
+    SL22 = list( A = 7, B = 8 )
+  )
+)
+# Extract 1st element from level 1 (SLX1)
+lst \%pull_sublist\% 1
+# Extract 1st element from level 2 (SLX2[[1]])
+lst \%pull_sublist\% c( 2, 1 )
 
 }

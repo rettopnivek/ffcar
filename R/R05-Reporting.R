@@ -3,7 +3,7 @@
 # email: kevin.w.potter@gmail.com
 # Please email me directly if you
 # have any questions or comments
-# Last updated 2023-04-10
+# Last updated 2023-06-02
 
 # Table of contents
 # 1) Functions for text content
@@ -28,7 +28,9 @@
 #' Unicode Lookup Table
 #'
 #' Function that returns useful unicode with
-#' shorthand labels for easy lookup.
+#' shorthand labels for easy lookup. Note that
+#' for certain systems, the code points
+#' used here may not render properly.
 #'
 #' @return A named character vector with unicode
 #'   and associated shorthand labels.
@@ -119,32 +121,57 @@ ffcar_unicode_lookup <- function() {
     SPe   = '\U207C', # =
     # - Letters
     SPla  = '\U1D43',  # a
+    SPlA  = '\UA7F9',
     SPlb  = '\U1D47',  # b
+    SPlB  = '\U1D2D',
     SPlc  = '\U1D9C',  # c
+    SPlC  = '\UA7FD',
     SPld  = '\U1D48',  # d
+    SPlD  = '\U1D30',
     SPle  = '\U1D49',  # e
+    SPlE  = '\U1D31',
     SPlf  = '\U1DA0',  # f
+
     SPlg  = '\U1D4D',  # g
+    SPlG  = '\U1D33',
     SPlh  = '\U02B0',  # h
+    SPlH  = '\U1D34',
     SPli  = '\U2071',  # i
+    SPlI  = '\U1D35',
     SPlj  = '\U02B2',  # j
-    SPln  = '\U207F',  # n
+    SPlJ  = '\U1D36',
     SPlk  = '\U1D4F',  # k
+    SPlK  = '\U1D37',
     SPll  = '\U02E1',  # l
+    SPlL  = '\U1D38',
     SPlm  = '\U1D50',  # m
+    SPlM  = '\U1D39',
     SPln  = '\U207F',  # n
+    SPlN  = '\U1D3A',
     SPlo  = '\U1D52',  # o
+    SPlO  = '\U1D3C',
     SPlp  = '\U1D56',  # p
+    SPlP  = '\U1D3E',
     SPlq  = '\U107A5', # q
+
     SPlr  = '\U02B3',  # r
+    SPlR  = '\U1D3F',
     SPls  = '\U02E2',  # s
+
     SPlt  = '\U1D57',  # t
+    SPlT  = '\U1D40',
     SPlu  = '\U1D58',  # u
+    SPlU  = '\U1D41',
     SPlv  = '\U1D5B',  # v
+    SPlV  = '\U2C7D',
     SPlw  = '\U02B7',  # w
+    SPlW  = '\U1D42',
     SPlx  = '\U02E3',  # x
+
     SPly  = '\U02B8',  # y
-    SPlz  = '\U1DBB',  # z # Check
+
+    SPlz  = '\U1DBB',  # z
+
     # Subscripts
     SB0   = '\U2080', # 0
     SB1   = '\U2081', # 1
@@ -479,6 +506,8 @@ ffcar_variables_to_labels <- function(
     c( 'EQL', '=' ), # 10
     c( 'SLS', '/' ), # 11
     c( 'HSH', '#' ), # 12
+    c( 'PRC', '%' ), # 13
+    c( 'AMP', '&' ), # 14
     c( chr_space, ' ' )
   )
 

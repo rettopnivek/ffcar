@@ -3,7 +3,7 @@
 # email: kevin.w.potter@gmail.com
 # Please email me directly if you
 # have any questions or comments
-# Last updated 2023-03-03
+# Last updated 2023-06-02
 
 # Table of contents
 # 1) ffcar_flextable
@@ -12,6 +12,7 @@
 #   1.3) Format table to be in APA-style
 #   1.4) Additional table formatting
 # 2) ffcar_reformat_columns
+# 3) ffcar_design_table
 
 #### 1) ffcar_flextable ####
 #' Create APA-Style Flextable Object
@@ -434,4 +435,205 @@ ffcar_reformat_columns <- function(
   return( chr_out )
 }
 
+#### 3) ffcar_design_table ####
+#' Design a Table with Summmary Statistics
+#'
+#' Function to provide a flexible means of creating a table
+#' of summary statistics for a data set (e.g., useful for
+#' creating sample characteristics tables).
+#'
+#' @param dtf_data A data frame with values to summarize over.
+#' @param lst_subsets A list of logical vectors (each matching
+#'   in length to the number of rows of \code{dtf_data})
+#'   specifying the subsets of data to summarize over. Multiple
+#'   logical vectors will result in the creation of separate
+#'   columns with summary statistics (one for each logical vector).
+#'   The names for the columns of summary statistics will be
+#'   set to the list names.
+#' @param ... Additional lists specifying the rows to include
+#'   in the table. Each list should be in the format of:
+#'   \code{list( 'Label', 'Column name', 'Statistics', Digits,
+#'   'Category' ).} The character string for the row label will
+#'   be formatted using the function [ffcar::ffcar_sub_in_content].
+#'   The character string for the column name specifies which column
+#'   in \code{dtf_data} summary statistics should be computed
+#'   over. The character string for the type of statistics to compute
+#'   is passed to the syntax argument of the function
+#'   [ffcar::ffcar_summa]. The integer for digits indicates the
+#'   number of decimal places summary statistics should be round to.
+#'   The final element of the list allows users to specify categories
+#'   to match over to create a binary variable for computing proportions,
+#'   percentages, and/or frequencies (otherwise the column must already
+#'   consist of \code{TRUE} or \code{FALSE} values). Elements of the
+#'   list must be specified in order; however, fewer than 5 elements
+#'   can be specified. For example, to create a row that consists only
+#'   of a label, users can simply provide a list with a single character
+#'   string.
+#'
+#' @return A data frame.
+#'
+#' @examples
+#' # Example data set
+#' data(mtcars)
+#'
+#' # Create summary table
+#' dtf_table <- ffcar_design_table(
+#'   # Data set
+#'   mtcars,
+#'   # Subsets of data (determines # of columns)
+#'   list(
+#'     Overall = rep( TRUE, nrow(mtcars) ),
+#'     Cylinders_4 = mtcars$cyl %in% 4,
+#'     Cylinders_6 = mtcars$cyl %in% 6,
+#'     Cylinders_8 = mtcars$cyl %in% 8
+#'   ),
+#'
+#'  # Rows
+#'   # list( Label, Column, Summary, Digits, Category )
+#'   list( 'Sample size',
+#'         'mpg', '[[N]]' ),
+#'   list( 'Miles per gallon; M (SD)',
+#'         'mpg', '[[M]] ([[SD]])', 1 ),
+#'   list( 'Weight (10[[SP3]] lbs); M (SD)',
+#'         'wt', '[[M]] ([[SD]])', 1 ),
+#'   list( 'Transmission; % automatic (N)',
+#'         'am', '[[P]]% ([[C]])', 1, 0 )
+#' )
+#' dtf_table[,-(2:5)]
+#'
+#' @export
 
+ffcar_design_table <- function(
+    dtf_data,
+    lst_subsets,
+    ... ) {
+
+  # If no subsets are specified
+  if ( is.null( lst_subsets ) ) {
+
+    lst_subsets <- list(
+      rep( TRUE, nrow(dtf_data) )
+    )
+
+    # Close 'If no subsets are specified'
+  }
+
+  # Extract specification of rows
+  lst_arg <- list(...)
+  int_rows <- seq_along( lst_arg )
+
+  # Initialize table
+  dtf_table <- data.frame(
+    Label = rep( '', max(int_rows) ),
+    Variable = '',
+    Statistic = '',
+    Digits = 2,
+    Category = ''
+  )
+
+  # Function to switch between continuous or categorical variable
+  fun_category <- function(
+    x,
+    category ) {
+
+    if ( all(category %in% '') ) {
+      return(x)
+    } else {
+      return(x %in% category)
+    }
+
+  }
+
+  # Loop over rows
+  for ( r in int_rows ) {
+
+    # Add label
+    if ( length( lst_arg[[r]] ) >= 1 ) {
+
+      dtf_table$Label[r] <- ffcar::ffcar_sub_in_content(
+        lst_arg[[r]][[1]]
+      )
+
+      # Close 'Add label'
+    }
+
+    # Add variable and statistics to compute
+    if ( length( lst_arg[[r]] ) > 2 ) {
+
+      dtf_table$Variable[r] <- lst_arg[[r]][[2]]
+      dtf_table$Statistic[r] <- lst_arg[[r]][[3]]
+
+      # Close 'Add variable and statistics to compute'
+    }
+
+    # Add digits to round to
+    if ( length( lst_arg[[r]] ) > 3 ) {
+
+      dtf_table$Digits[r] <- lst_arg[[r]][[4]]
+
+      # Close 'Add digits to round to'
+    }
+
+    # Add categories to match against
+    if ( length( lst_arg[[r]] ) > 4 ) {
+
+      dtf_table$Category[r] <- lst_arg[[r]][[5]]
+
+      # Close 'Add categories to match against'
+    }
+
+    # Close 'Loop over rows'
+  }
+
+
+  # Extract columns to
+  int_col <- length( lst_subsets )
+
+  # Default column names
+  if ( is.null( names( lst_subsets ) ) ) {
+
+    names( lst_subsets ) <- paste0(
+      'X', seq_along( lst_subsets )
+    )
+
+    # Close 'Default column names'
+  }
+
+  # Initialize matrix for summaries
+  mat_summary <- matrix(
+    '', nrow( dtf_table ), int_col
+  )
+
+  # Loop over columns
+  for ( k in 1:int_col ) {
+
+    # Loop over rows
+    for ( r in int_rows ) {
+
+      lgc_subset <- lst_subsets[[k]]
+
+      # If summary should be computed
+      if ( dtf_table$Variable[r] != '' ) {
+
+        mat_summary[r, k] <- ffcar::ffcar_summa(
+          fun_category( dtf_data[[ dtf_table$Variable[r] ]][lgc_subset],
+                        dtf_table$Category[r] ),
+          chr_syntax = dtf_table$Statistic[r],
+          int_digits = dtf_table$Digits[r]
+        )
+
+        # Close 'If summary should be computed'
+      }
+
+      # Close 'Loop over rows'
+    }
+
+    # Close 'Loop over columns'
+  }
+
+  colnames( mat_summary ) <- names( lst_subsets )
+
+  dtf_table <- cbind( dtf_table, mat_summary )
+
+  return( dtf_table )
+}

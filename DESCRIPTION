@@ -1,10 +1,10 @@
 Package: ffcar
 Title: Functions for Creating Analysis Reports
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     person( "Kevin", "Potter", , "kevin.w.pottert@gmail.com", 
     role = c("aut", "cre"), 
-    comment = c(ORCID = "YOUR-ORCID-ID") )
+    comment = c(ORCID = "0000-0002-3845-0512") )
 Description: What the package does (one paragraph).
 Depends:
     R (>= 4.0),
@@ -12,4 +12,4 @@ Depends:
 License: License: MIT + License
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3

@@ -12,7 +12,9 @@ and associated shorthand labels.
 }
 \description{
 Function that returns useful unicode with
-shorthand labels for easy lookup.
+shorthand labels for easy lookup. Note that
+for certain systems, the code points
+used here may not render properly.
 }
 \examples{
 # Greek letters
