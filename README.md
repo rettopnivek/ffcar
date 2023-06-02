@@ -1,4 +1,6 @@
-## ffcar: Functions for Creating Analysis Reports
+## ffcar
+
+## Functions for Creating Analysis Reports
 
 The R package **ffcar** provides a collection of functions to help create a basic analysis report using Rmarkdown and the R package [flextable](https://cran.r-project.org/web/packages/flextable/index.html).
 
