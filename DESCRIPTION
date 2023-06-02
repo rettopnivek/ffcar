@@ -5,7 +5,9 @@ Authors@R:
     person( "Kevin", "Potter", , "kevin.w.pottert@gmail.com", 
     role = c("aut", "cre"), 
     comment = c(ORCID = "0000-0002-3845-0512") )
-Description: What the package does (one paragraph).
+Description: The R package ffcar provides a collection of functions 
+  to help create a basic analysis report using Rmarkdown and the R 
+  package flextable.
 Depends:
     R (>= 4.0),
     flextable
