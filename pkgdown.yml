@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-06-02T17:14Z
+last_built: 2023-06-02T17:38Z
 urls:
   reference: https://rettopnivek.github.io/ffcar/reference
   article: https://rettopnivek.github.io/ffcar/articles
