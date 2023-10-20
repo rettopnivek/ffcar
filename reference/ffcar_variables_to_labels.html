@@ -14,7 +14,7 @@ in a regression) to nice labels."><!-- mathjax --><script src="https://cdnjs.clo
     
     <a class="navbar-brand me-2" href="../index.html">ffcar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +76,8 @@ pattern to replace with an empty space.</p></dd>
 
 <dt>int_skip</dt>
 <dd><p>An optional integer vector
-with values from 1 to 12 indicating
-specifc patterns to skip.</p></dd>
+with values from 1 to 18 indicating
+specific patterns to skip.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -113,6 +113,12 @@ specifc patterns to skip.</p></dd>
 <span class="r-in"><span><span class="co"># Hash sign</span></span></span>
 <span class="r-in"><span><span class="fu">ffcar_variables_to_labels</span><span class="op">(</span> <span class="st">'PRDHSHZZofZZcounts'</span> <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "# of counts"</span>
+<span class="r-in"><span><span class="co"># Less than and greater than signs</span></span></span>
+<span class="r-in"><span><span class="fu">ffcar_variables_to_labels</span><span class="op">(</span> <span class="st">'COLXZZLSSZZYZZAMPZZYZZGRTZZZ'</span> <span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X &lt; Y &amp; Y &gt; Z"</span>
+<span class="r-in"><span><span class="co"># Less than/Greater than or equal to signs</span></span></span>
+<span class="r-in"><span><span class="fu">ffcar_variables_to_labels</span><span class="op">(</span> <span class="st">'COLXZZLTEZZYZZAMPZZYZZGTEZZZ'</span> <span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "X ≤ Y &amp; Y ≥ Z"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
