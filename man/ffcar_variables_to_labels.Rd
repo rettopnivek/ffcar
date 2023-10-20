@@ -23,8 +23,8 @@ string patterns to remove. Defaults to
 pattern to replace with an empty space.}
 
 \item{int_skip}{An optional integer vector
-with values from 1 to 12 indicating
-specifc patterns to skip.}
+with values from 1 to 18 indicating
+specific patterns to skip.}
 }
 \value{
 A character vector of nicely formatted labels.
@@ -51,5 +51,9 @@ ffcar_variables_to_labels( 'PRDPOPPAPPEBCLP' )
 ffcar_variables_to_labels( 'PRDXZZEQLZZYZZPLSZZZ' )
 # Hash sign
 ffcar_variables_to_labels( 'PRDHSHZZofZZcounts' )
+# Less than and greater than signs
+ffcar_variables_to_labels( 'COLXZZLSSZZYZZAMPZZYZZGRTZZZ' )
+# Less than/Greater than or equal to signs
+ffcar_variables_to_labels( 'COLXZZLTEZZYZZAMPZZYZZGTEZZZ' )
 
 }

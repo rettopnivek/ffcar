@@ -438,8 +438,8 @@ ffcar_padded_round <- function( num_value, int_digits ) {
 #' @param chr_space A character string, the
 #'   pattern to replace with an empty space.
 #' @param int_skip An optional integer vector
-#'   with values from 1 to 12 indicating
-#'   specifc patterns to skip.
+#'   with values from 1 to 18 indicating
+#'   specific patterns to skip.
 #'
 #' @return A character vector of nicely formatted labels.
 #'
@@ -460,6 +460,10 @@ ffcar_padded_round <- function( num_value, int_digits ) {
 #' ffcar_variables_to_labels( 'PRDXZZEQLZZYZZPLSZZZ' )
 #' # Hash sign
 #' ffcar_variables_to_labels( 'PRDHSHZZofZZcounts' )
+#' # Less than and greater than signs
+#' ffcar_variables_to_labels( 'COLXZZLSSZZYZZAMPZZYZZGRTZZZ' )
+#' # Less than/Greater than or equal to signs
+#' ffcar_variables_to_labels( 'COLXZZLTEZZYZZAMPZZYZZGTEZZZ' )
 #'
 #' @export
 
@@ -508,6 +512,10 @@ ffcar_variables_to_labels <- function(
     c( 'HSH', '#' ), # 12
     c( 'PRC', '%' ), # 13
     c( 'AMP', '&' ), # 14
+    c( 'LSS', '<' ), # 15
+    c( 'GRT', '>' ), # 16
+    c( 'LTE', ffcar::ffcar_unicode_lookup()['MSlte'] ), # 17
+    c( 'GTE', ffcar::ffcar_unicode_lookup()['MSgte'] ), # 18
     c( chr_space, ' ' )
   )
 
@@ -1247,7 +1255,7 @@ ffcar_create_report <- function(
     'knitr::opts_chunk$set(echo = TRUE)',
     '```',
     '',
-    '```{r packages, echo=FALSE, message=FALSE}',
+    '```{r packages, echo=FALSE, message=FALSE, warning=FALSE}',
     'library(arfpam)',
     'library(dplyr)',
     'library(ffcar)',
