@@ -14,7 +14,7 @@ via a simple, intuitive syntax."><!-- mathjax --><script src="https://cdnjs.clou
     
     <a class="navbar-brand me-2" href="../index.html">ffcar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -156,19 +156,19 @@ the identifier <code>[[i]]</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Mean and standard deviation</span></span></span>
 <span class="r-in"><span><span class="fu">ffcar_summa</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "? (?)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "5.84 (0.83)"</span>
 <span class="r-in"><span><span class="co"># Median and IQR</span></span></span>
 <span class="r-in"><span><span class="fu">ffcar_summa</span><span class="op">(</span><span class="va">x</span>, <span class="st">"[[Md]] ([[IQR]])"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "? (?)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "5.8 (1.3)"</span>
 <span class="r-in"><span><span class="co"># Pad to 2 decimal places</span></span></span>
 <span class="r-in"><span><span class="fu">ffcar_summa</span><span class="op">(</span><span class="va">x</span>, <span class="st">"[[Md]] ([[IQR]])"</span>, lgc_pad <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "? (?)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "5.80 (1.30)"</span>
 <span class="r-in"><span><span class="co"># Mean (SD); N [min, 1st, 2nd, and 3rd quartile, max]</span></span></span>
 <span class="r-in"><span><span class="fu">ffcar_summa</span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="st">"[[N]]; [[M]] ([[SD]]); "</span>,</span></span>
 <span class="r-in"><span>    <span class="st">"[[[Mn]], [[Q1]], [[Md]], [[Q3]], [[Mx]]]"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>, int_digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "?; ? (?); ?, ?, ?, ?, ?]"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "150; 5.8 (0.8); [4.3, 5.1, 5.8, 6.4, 7.9]"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Custom measures via user-defined function</span></span></span>
 <span class="r-in"><span><span class="co"># Geometric mean</span></span></span>
@@ -178,7 +178,7 @@ the identifier <code>[[i]]</code>.</p>
 <span class="r-in"><span><span class="fu">ffcar_summa</span><span class="op">(</span><span class="va">x</span>, <span class="st">"[[M]] vs. [[1]]"</span>,</span></span>
 <span class="r-in"><span>  fun_custom <span class="op">=</span> <span class="va">fun_geometric</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "? vs. 5.79"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "5.84 vs. 5.79"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example using 'mtcars' data set</span></span></span>
 <span class="r-in"><span><span class="co"># Categorical variable - # of forward gears</span></span></span>
@@ -187,12 +187,12 @@ the identifier <code>[[i]]</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Percent and counts for 3 forward gears</span></span></span>
 <span class="r-in"><span><span class="fu">ffcar_summa</span><span class="op">(</span><span class="va">x</span> <span class="op">==</span> <span class="fl">3</span>, <span class="st">"[[P]]% ([[C]] out of [[N]])"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "?% (? out of ?)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "46.88% (15 out of 32)"</span>
 <span class="r-in"><span><span class="co"># Percent and counts for 4 or 5 forward gears</span></span></span>
 <span class="r-in"><span><span class="fu">ffcar_summa</span><span class="op">(</span><span class="va">x</span>, <span class="st">"[[P]]% ([[C]] out of [[N]])"</span>,</span></span>
 <span class="r-in"><span>  vec_categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "?% (? out of ?)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "53.12% (17 out of 32)"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
