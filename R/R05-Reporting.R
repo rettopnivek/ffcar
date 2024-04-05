@@ -878,7 +878,7 @@ ffcar_summa <- function(
   for ( i in seq_along( lst_replacements ) ) {
 
     lgc_comp_stat <-
-      grepl( chr_syntax, lst_replacements[[i]]$syntax, fixed = TRUE )
+      grepl( lst_replacements[[i]]$syntax, chr_syntax, fixed = TRUE )
 
     # Compute specified statistic
     if ( lgc_comp_stat ) {
