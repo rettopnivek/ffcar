@@ -877,12 +877,21 @@ ffcar_summa <- function(
   # Loop over statistics
   for ( i in seq_along( lst_replacements ) ) {
 
-    chr_output <- gsub(
-      lst_replacements[[i]]$syntax,
-      lst_replacements[[i]]$fun( vec_values ),
-      chr_output,
-      fixed = TRUE
-    )
+    lgc_comp_stat <-
+      grepl( chr_syntax, lst_replacements[[i]]$syntax, fixed = TRUE )
+
+    # Compute specified statistic
+    if ( lgc_comp_stat ) {
+
+      chr_output <- gsub(
+        lst_replacements[[i]]$syntax,
+        lst_replacements[[i]]$fun( vec_values ),
+        chr_output,
+        fixed = TRUE
+      )
+
+      # Close 'Compute specified statistic'
+    }
 
   }
 
