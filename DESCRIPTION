@@ -1,6 +1,6 @@
 Package: ffcar
 Title: Functions for Creating Analysis Reports
-Version: 1.0.2
+Version: 1.1.0
 Authors@R: 
     person( "Kevin", "Potter", , "kevin.w.pottert@gmail.com", 
     role = c("aut", "cre"), 

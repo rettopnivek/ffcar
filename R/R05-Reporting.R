@@ -837,6 +837,40 @@ ffcar_summa <- function(
 
         return(p)
       }
+    ),
+    # Counts/frequencies for NA
+    list(
+      syntax = "[[NAC]]",
+      fun = function( x ) {
+
+        cnt <- sum( is.na(x) )
+
+        return(cnt)
+      }
+    ),
+    # Percents for NA
+    list(
+      syntax = "[[NAP]]",
+      fun = function( x ) {
+
+        p <- 100*mean( is.na(x) )
+
+        p <- fun_format(p)
+
+        return(p)
+      }
+    ),
+    # Proportions for NA
+    list(
+      syntax = "[[NAPr]]",
+      fun = function( x ) {
+
+        p <- mean( is.na(x) )
+
+        p <- fun_format(p)
+
+        return(p)
+      }
     )
   )
 
