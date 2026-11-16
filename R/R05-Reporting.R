@@ -823,6 +823,23 @@ ffcar_summa <- function(
         return(p)
       }
     ),
+    # Percent [No NA]
+    list(
+      syntax = "[[PnNA]]",
+      fun = function( x ) {
+
+        if ( is.null(vec_categories) ) {
+          vec_categories <- TRUE
+        }
+
+        n <- sum(x %in% vec_categories, na.rm = TRUE)
+        N <- sum( !is.na(x) )
+
+        p <- fun_format(100*n/N)
+
+        return(p)
+      }
+    ),
     # Proportion
     list(
       syntax = "[[Pr]]",
@@ -834,6 +851,23 @@ ffcar_summa <- function(
         p <- mean(x %in% vec_categories, na.rm = lgc_remove_NA)
 
         p <- fun_format(p)
+
+        return(p)
+      }
+    ),
+    # Proportion [No NA]
+    list(
+      syntax = "[[PrnNA]]",
+      fun = function( x ) {
+
+        if ( is.null(vec_categories) ) {
+          vec_categories <- TRUE
+        }
+
+        n <- sum(x %in% vec_categories, na.rm = TRUE)
+        N <- sum( !is.na(x) )
+
+        p <- fun_format(n/N)
 
         return(p)
       }
