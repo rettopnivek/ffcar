@@ -7,7 +7,7 @@ characteristics tables).
 ## Usage
 
 ``` r
-ffcar_design_table(dtf_data, lst_subsets, ..., lgc_remove_NA = FALSE)
+ffcar_design_table(dtf_data, lst_subsets, ...)
 ```
 
 ## Arguments
@@ -46,11 +46,6 @@ ffcar_design_table(dtf_data, lst_subsets, ..., lgc_remove_NA = FALSE)
   of the list must be specified in order; however, fewer than 5 elements
   can be specified. For example, to create a row that consists only of a
   label, users can simply provide a list with a single character string.
-
-- lgc_remove_NA:
-
-  A logical value; if `TRUE` removes `NA` values when computing
-  statistics.
 
 ## Value
 
