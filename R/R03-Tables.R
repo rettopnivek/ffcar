@@ -539,7 +539,7 @@ ffcar_design_table <- function(
     if ( all(category %in% '') ) {
       return(x)
     } else {
-      return(x %in% category)
+      return(x == category)
     }
 
   }
