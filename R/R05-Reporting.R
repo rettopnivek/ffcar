@@ -316,7 +316,7 @@ ffcar_sub_in_content <- function(
 #'
 #' @param lgc_condition A logical value.
 #' @param chr_statement A character vector with two strings,
-#'   [1] the statement to return when \code{FALSE} and [2]
+#'   (1) the statement to return when \code{FALSE} and (2)
 #'   the statement to return when \code{TRUE}. Defaults to
 #'   a statement on statistical significance.
 #'

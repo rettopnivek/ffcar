@@ -10,7 +10,7 @@ ffcar_conditional_statement(lgc_condition, chr_statement = NULL)
 \item{lgc_condition}{A logical value.}
 
 \item{chr_statement}{A character vector with two strings,
-\link{1} the statement to return when \code{FALSE} and \link{2}
+(1) the statement to return when \code{FALSE} and (2)
 the statement to return when \code{TRUE}. Defaults to
 a statement on statistical significance.}
 }

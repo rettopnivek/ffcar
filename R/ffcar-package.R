@@ -3,7 +3,7 @@
 # email: kevin.w.potter@gmail.com
 # Please email me directly if you
 # have any questions or comments
-# Last updated 2024-04-05
+# Last updated 2026-11-16
 
 # Package development
 # - To update man pages
@@ -13,7 +13,6 @@
 
 #' Functions for Creating Analysis Reports
 #'
-#' @docType package
 #' @name ffcar-package
 #'
 #' @description
@@ -23,4 +22,4 @@
 #' tasks when creating analysis reports. See
 #' \url{https://rettopnivek.github.io/ffcar/}
 #' for more details.
-NULL
+"_PACKAGE"

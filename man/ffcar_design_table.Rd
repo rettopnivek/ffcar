@@ -4,7 +4,7 @@
 \alias{ffcar_design_table}
 \title{Design a Table with Summmary Statistics}
 \usage{
-ffcar_design_table(dtf_data, lst_subsets, ...)
+ffcar_design_table(dtf_data, lst_subsets, ..., lgc_remove_NA = FALSE)
 }
 \arguments{
 \item{dtf_data}{A data frame with values to summarize over.}
@@ -36,6 +36,9 @@ list must be specified in order; however, fewer than 5 elements
 can be specified. For example, to create a row that consists only
 of a label, users can simply provide a list with a single character
 string.}
+
+\item{lgc_remove_NA}{A logical value; if \code{TRUE} removes \code{NA}
+values when computing statistics.}
 }
 \value{
 A data frame.

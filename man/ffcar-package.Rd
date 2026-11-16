@@ -2,6 +2,7 @@
 % Please edit documentation in R/ffcar-package.R
 \docType{package}
 \name{ffcar-package}
+\alias{ffcar}
 \alias{ffcar-package}
 \title{Functions for Creating Analysis Reports}
 \description{
@@ -10,4 +11,15 @@ functions to help with a variety of common
 tasks when creating analysis reports. See
 \url{https://rettopnivek.github.io/ffcar/}
 for more details.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://rettopnivek.github.io/ffcar/}
+}
+
+}
+\author{
+\strong{Maintainer}: Kevin Potter \email{kevin.w.pottert@gmail.com} (\href{https://orcid.org/0000-0002-3845-0512}{ORCID})
+
 }

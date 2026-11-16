@@ -469,6 +469,8 @@ ffcar_reformat_columns <- function(
 #'   can be specified. For example, to create a row that consists only
 #'   of a label, users can simply provide a list with a single character
 #'   string.
+#' @param lgc_remove_NA A logical value; if \code{TRUE} removes \code{NA}
+#'   values when computing statistics.
 #'
 #' @return A data frame.
 #'
@@ -506,7 +508,8 @@ ffcar_reformat_columns <- function(
 ffcar_design_table <- function(
     dtf_data,
     lst_subsets,
-    ... ) {
+    ...,
+    lgc_remove_NA = FALSE ) {
 
   # If no subsets are specified
   if ( is.null( lst_subsets ) ) {
@@ -619,7 +622,8 @@ ffcar_design_table <- function(
           fun_category( dtf_data[[ dtf_table$Variable[r] ]][lgc_subset],
                         dtf_table$Category[r] ),
           chr_syntax = dtf_table$Statistic[r],
-          int_digits = dtf_table$Digits[r]
+          int_digits = dtf_table$Digits[r],
+          lgc_remove_NA = lgc_remove_NA
         )
 
         # Close 'If summary should be computed'
